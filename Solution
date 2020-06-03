@@ -1,0 +1,24 @@
+import java.util.*;
+public class Solution{
+    public static void main(String arg[]){
+        Scanner scan=new Scanner(System.in);
+        int n=scan.nextInt();
+        int x=scan.nextInt();
+        ArrayList<Integer> a=new ArrayList<Integer>(n);
+        for(int i=0; i<n; i++){
+            a.add(scan.nextInt());
+        }
+        int count=0;
+        for(int i=0; i<n-1; i++){
+            for(int j=1; j<n; j++){
+                if((a.get(i)+a.get(j))==x){
+                    count++;
+                }
+            }
+        }
+        if(count>0)
+            System.out.println("Yes");
+        else    
+            System.out.println("No");
+    }
+}
