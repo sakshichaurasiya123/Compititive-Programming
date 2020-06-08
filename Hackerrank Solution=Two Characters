@@ -1,0 +1,38 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        String s = sc.next();
+        System.out.println("String : "+s);
+        
+        int max = 0;
+        for (char c1 = 'a'; c1 <= 'z'; c1++) {
+            for (char c2 = (char)(c1 + 1); c2 <= 'z'; c2++) {
+                int len = 0;
+                char prev = '\0';
+                for (int i = 0; i < s.length(); i++) {
+                    char next = s.charAt(i);
+                    if (next == c1 || next == c2) {
+                        if (next != prev) {
+                            len++;
+                            System.out.println("Next : "+next +" Previous : "+prev);
+                            //System.out.println("Previous : "+prev);
+                            prev = next;
+                            
+                        } else {
+                            len = 0;
+                            break;
+                        }
+                    }
+                }
+                max = Math.max(max, len);
+            }
+        }
+        System.out.println(max>1?max:0);
+    }
+}
