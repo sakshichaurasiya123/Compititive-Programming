@@ -1,0 +1,60 @@
+import java.util.*;
+
+public class ProblemC
+
+{
+
+public static void main(String[] args) {
+try{
+    Scanner in = new Scanner (System.in);
+    
+    int n=in.nextInt();
+    int a[] =new int [50];
+    for(int i=0; i<n; i++){
+        a[i]=in.nextInt();
+    }
+   int pos=in.nextInt();
+    int num=in.nextInt();
+    for(int i=0; i<a.length; i++){
+        System.out.print(a[i]+" ");
+    }
+     System.out.println();
+    System.out.println("---------------------------------");
+    //if(pos<=0 || pos>n+1){
+     //    System.out.println("Invalid Position");
+   // }
+   // else{
+   
+   /*Inser at beginning 
+    for(int i=n-1; i>=0; i--){
+        a[i+1]=a[i];
+    }
+    a[0]=num;
+     
+    n++;
+    for(int i=0; i<n; i++){
+        System.out.print(a[i]+"  ");
+    }
+    }
+    */
+   /*Insert at last 
+   n++;
+   a[n-1]=num;
+  
+    for(int i=0; i<n; i++){
+        System.out.print(a[i]+"  ");
+    }
+   */
+   /* Swapping of array */
+   a[n]=a[pos-1];
+   a[pos-1]=num;
+   n++;
+   for(int i=0; i<n; i++){
+        System.out.print(a[i]+"  ");
+    }
+   
+}
+catch(Exception e){}
+}
+
+}
