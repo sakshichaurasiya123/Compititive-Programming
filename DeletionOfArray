@@ -1,0 +1,68 @@
+import java.util.*;
+
+public class DeletionOfArray
+{
+
+public static void main(String[] args) {
+try{
+    Scanner in = new Scanner (System.in);
+    
+    int n=in.nextInt();
+    int a[] =new int [50];
+    for(int i=0; i<n; i++){
+        a[i]=in.nextInt();
+    }
+    for(int i=0; i<a.length; i++){
+        System.out.print(a[i]+" ");
+    }
+     System.out.println();
+    System.out.println("---------------------------------");
+    
+    /* Delete at Specific Position 
+    if(pos<=-1 || pos>n+1){
+        System.out.println("Invalid Position");
+    }
+    else{
+    int temp=a[pos-1];
+    for(int i=pos-1; i<n-1; i++){
+        //temp = a[i];
+        a[i]=a[i+1];
+    }
+      System.out.println("---------------------------------");
+   System.out.println("Deleted Element" + temp);
+    n--;
+    System.out.print("new Array "+ " ");
+    for(int i=0; i<n; i++){
+        System.out.print(" " +a[i]+"  ");
+    }
+     System.out.println();
+     */
+     /* Delete from Beginning 
+     for(int i=0; i<n-1; i++){
+         a[i]=a[i+1];
+     }
+     n--;
+     for(int i=0; i<n; i++){
+         System.out.print(a[i]+ " ");
+      }
+      */
+      
+      /* Delete from Last */
+     // int num=scan.nextInt();
+    int temp=0;
+    temp=a[n-1];
+    n--;
+    System.out.println("Deleted ELement : "+temp);
+     System.out.println("---------------------------------");
+    System.out.print("new Array "+ " ");
+    for(int i=0; i<n; i++){
+        System.out.print(a[i]+ " ");
+        
+    }
+      
+    }
+
+catch(Exception e){}
+}
+
+}
