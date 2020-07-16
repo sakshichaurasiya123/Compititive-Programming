@@ -1,0 +1,234 @@
+/*package whatever //do not write package name here */
+
+import java.io.*;
+import java.util.*;
+class Node{
+   private  int data;
+   private  Node next;
+    public Node(){
+        data=0; 
+        next=null;
+    }
+    public Node(int d,Node n){
+        data=d;
+        next=n;
+    }
+    public void setData(int d){
+        data=d;
+    }
+    public void setNext( Node n){
+        next=n;
+    }
+    public int getData(){
+        return (data);
+    }
+    public Node getNext(){
+        return (next);
+    }
+}
+class LinkedList{
+    private int size;
+    private Node start;
+    public LinkedList(){
+        size=0;
+        start=null;
+    }
+    /*******Insert_at_beginning*******/
+    public void Insert_at_beginning(int val){
+        Node n;
+        n=new Node();
+        n.setData(val);
+        n.setNext(start);
+        start=n;
+        size++;
+    }
+    /******Insert_at_Last********/
+    public void Insert_at_Last(int val){
+    Node n,t;
+    n=new Node();
+    n.setData(val);
+    t=start;
+    if(t==null)
+        start=n;
+    else{
+        while(t.getNext() !=null){
+             t=t.getNext();}
+        t.setNext(n);
+    }
+    size++;
+    }
+    
+    /*******Insert_at_given_position*******/
+    public void Insert_at_given_position(int val,int pos){
+        if(pos==1)
+            Insert_at_beginning(val);
+        else if(pos==size+1)
+            Insert_at_Last(val);
+        else if(pos>1 && pos<=size)
+        {
+            Node  n,t;
+            n=new Node(val,null);
+            t=start;
+            for(int i=1; i<pos-1; i++)
+                t=t.getNext();
+            
+            n.setNext(t.getNext());
+            t.setNext(n);
+            size++;
+
+        }
+        else
+        System.out.println("You cannot Insert in this position");
+        
+    }
+    
+    /************Delete_at_beginning**************/
+    public void Delete_at_beginning(){
+        if(start==null){
+            System.out.println("No Element Found in List");
+        }
+        else
+            {
+                start=start.getNext();
+                size--;
+            }
+    }
+    
+    public void Delete_at_last(){
+        if(start==null)
+            System.out.println("There is no element exist in a list");
+        else if(size==1){
+                start=null;
+                size--;
+        }
+        else{
+            Node t;
+            t=start;
+            for(int i=1; i<size-1; i++){
+                t=t.getNext();
+            }
+            t.setNext(null);
+        }
+    }
+    
+        
+    public void Delete_at_middle(int pos){
+        if(pos<1 && pos>size+1){
+            System.out.println("Invalid position");
+        }
+        else if(pos==1)
+            Delete_at_beginning();
+        else if(pos==size)
+            Delete_at_last();
+        else{
+            Node t, t1;
+            t=start;
+            for(int i=1; i<pos-1; i++)
+                t=t.getNext();
+            t1=t.getNext();
+            t.setNext(t1.getNext());
+            size--;
+        }
+    }
+    
+    
+    
+    public boolean isEmpty(){
+        if(start==null)
+            return(true);
+        else
+            return(false);
+        } 
+    
+    /************List Size********/
+    public int getListSize(){
+        return(size);
+    }
+    
+    /*******viewList***/
+public void viewList(){
+        Node t;
+        if(isEmpty()){
+            System.out.println("List is Empty");
+        }
+        else {
+            t=start;
+            System.out.print("List Element :  ");
+            for(int i=1; i<=size; i++)
+            {
+             System.out.print(" "+t.getData());
+             t=t.getNext();
+            }
+          //  System.out.println();
+        }
+            
+    }
+}
+
+public class LinkList{
+    public static void main(String []aStrings){
+        Scanner in=new Scanner(System.in);
+
+        LinkedList list=new LinkedList();
+        boolean flag=true;
+        try{
+            while(flag){
+        System.out.println();
+        System.out.println("1. Insert_at_beginning ");
+        System.out.println("2. Insert_at_Last ");
+        System.out.println("3. Insert_at_given_position");
+        System.out.println("4. Delete_at_beginning");
+        System.out.println("5. Delete_at_last ");
+        System.out.println("6. Delete_at_middle ");
+        System.out.println("7. viewList ");
+        System.out.println("8. Exit");
+        System.out.println("Enter Choice : ");
+        int choice=in.nextInt();
+        int val,pos;
+        switch(choice){
+            case 1:
+                 System.out.println("Enter Value");
+                    val=in.nextInt();
+                    list.Insert_at_beginning(val);
+                    break;
+                
+            case 2:
+                    System.out.println("Enter Value");
+                    val=in.nextInt();
+                    list.Insert_at_Last(val);
+                    break;
+                   
+            case 3:
+                    System.out.println("Enter Value");
+                    val=in.nextInt();
+                    System.out.println("Enter position");
+                    pos=in.nextInt();
+                    list.Insert_at_given_position(val,pos);
+                    break;
+            case 4:
+                    list.Delete_at_beginning();
+                    break;
+            case 5:
+                    list.Delete_at_last();
+                    break;
+            case 6:
+                System.out.println("Enter position");
+                pos=in.nextInt();
+                list.Delete_at_middle(pos);
+                break;
+            case 7:
+                    list.viewList();
+                    break;
+            case 8:
+                flag=false;
+                break;
+            default:
+                System.out.println("Invalid Choice");
+                break;
+                
+        }
+        }
+    }
+    catch(Exception e){}
+    }
+}
