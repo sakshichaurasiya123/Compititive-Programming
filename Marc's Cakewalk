@@ -1,0 +1,31 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+class Solution {
+    public static void main( String arg[]){
+        Scanner in=new Scanner(System.in);
+        int n=in.nextInt();
+        ArrayList<Integer> arr=new ArrayList<Integer>();
+        for(int i=0; i<n; i++)
+            arr.add(in.nextInt());
+        Collections.sort(arr);
+        System.out.println("Sorted Array : "+arr);
+        Collections.reverse(arr);
+        System.out.println("Reverse Array : "+arr);
+        long result=0;
+        for(int i=0; i<arr.size(); i++ ){
+            result +=(long)(Math.pow(2,i))*arr.get(i);
+        }
+        System.out.println(result);
+    }
+
+}
