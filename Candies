@@ -1,0 +1,40 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    public static void main(String args[] ) throws Exception {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+        Scanner in=new Scanner(System.in);
+        int  t=in.nextInt();
+        for(int l=0; l<t; l++){
+            int n=in.nextInt();
+            ArrayList<Integer>arr=new ArrayList<Integer>();
+            for(int i=0; i<n; i++)
+                arr.add(in.nextInt());
+            int sum=0;
+            for(int i=0; i<arr.size(); i++)
+                 sum +=arr.get(i); 
+            int john=sum;
+            ArrayList<Integer> arr1=new ArrayList<Integer>();
+            for(int kl=0; kl<arr.size(); kl++)
+            {
+                int mk=arr.get(kl);
+                arr1.add(mk);
+            }
+           for(int i=0; i<arr.size()-1; i++)
+           {   int sum1=0;
+               sum1 =arr.get(i)+arr.get(i+1);
+               arr1.add(sum1);
+           } 
+           System.out.println(arr1);
+           int smith= Collections.max(arr1);
+            if(john>smith)
+                System.out.println("Yes");
+            else
+                System.out.println("No");
+        }
+    }
+}
